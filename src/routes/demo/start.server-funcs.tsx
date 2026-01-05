@@ -52,10 +52,9 @@ export const Route = createFileRoute('/demo/start/server-funcs')({
 })
 
 function Home() {
+  const [todo, setTodo] = useState('')
   const router = useRouter()
   let todos = Route.useLoaderData()
-
-  const [todo, setTodo] = useState('')
 
   const submitTodo = useCallback(async () => {
     todos = await addTodo({ data: todo })
@@ -89,15 +88,13 @@ function Home() {
             value={todo}
             onChange={(e) => setTodo(e.target.value)}
             onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                submitTodo()
-              }
+              if (e.key === 'Enter') submitTodo()
             }}
             placeholder="Enter a new todo..."
             className="w-full px-4 py-3 rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
           />
           <button
-            disabled={todo.trim().length === 0}
+            disabled={!todo.trim().length}
             onClick={submitTodo}
             className="bg-blue-500 hover:bg-blue-600 disabled:bg-blue-500/50 disabled:cursor-not-allowed text-white font-bold py-3 px-4 rounded-lg transition-colors"
           >
