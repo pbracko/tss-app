@@ -66,6 +66,8 @@ function Component() {
 }
 ```
 
+For creating routes prefer using folders with `index.tsx` file for page, `route.tsx` file for layout, and other related files (e.g., `loader.ts`, `actions.ts`). Apply the same for routes with dynamic segments using `$param` syntax (`/posts/$postId`) and nested routes.
+
 ## Server Functions & API Routes
 
 ### Server Functions (RPC-style)
@@ -102,6 +104,8 @@ export const Route = createFileRoute('/demo/api/names')({
 4. **Styling**: Global CSS in `src/styles.css`, component-level via Tailwind classes
 5. **Generated Routes**: `src/routeTree.gen.ts` auto-generated—never edit manually
 6. **Head Configuration**: Set via `createRootRoute({ head: () => ({ meta: [...], links: [...] }) })`
+
+In `src/components` group components by feature or domain. Store Shadcn components in `src/components/ui/`.
 
 ## Deployment & Build Output
 
