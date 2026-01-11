@@ -50,14 +50,14 @@ const UsersUserIdIndexRoute = UsersUserIdIndexRouteImport.update({
   getParentRoute: () => UsersRouteRoute,
 } as any)
 const PostsPostIdIndexRoute = PostsPostIdIndexRouteImport.update({
-  id: '/$postId/',
-  path: '/$postId/',
-  getParentRoute: () => PostsRouteRoute,
+  id: '/posts/$postId/',
+  path: '/posts/$postId/',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const PostsPostIdRevisionIdRoute = PostsPostIdRevisionIdRouteImport.update({
-  id: '/$postId/$revisionId',
-  path: '/$postId/$revisionId',
-  getParentRoute: () => PostsRouteRoute,
+  id: '/posts/$postId/$revisionId',
+  path: '/posts/$postId/$revisionId',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const DemoStartServerFuncsRoute = DemoStartServerFuncsRouteImport.update({
   id: '/demo/start/server-funcs',
@@ -200,6 +200,8 @@ export interface RootRouteChildren {
   DemoApiNamesRoute: typeof DemoApiNamesRoute
   DemoStartApiRequestRoute: typeof DemoStartApiRequestRoute
   DemoStartServerFuncsRoute: typeof DemoStartServerFuncsRoute
+  PostsPostIdRevisionIdRoute: typeof PostsPostIdRevisionIdRoute
+  PostsPostIdIndexRoute: typeof PostsPostIdIndexRoute
   DemoStartSsrDataOnlyRoute: typeof DemoStartSsrDataOnlyRoute
   DemoStartSsrFullSsrRoute: typeof DemoStartSsrFullSsrRoute
   DemoStartSsrSpaModeRoute: typeof DemoStartSsrSpaModeRoute
@@ -245,17 +247,17 @@ declare module '@tanstack/react-router' {
     }
     '/posts/$postId/': {
       id: '/posts/$postId/'
-      path: '/$postId'
+      path: '/posts/$postId'
       fullPath: '/posts/$postId'
       preLoaderRoute: typeof PostsPostIdIndexRouteImport
-      parentRoute: typeof PostsRouteRoute
+      parentRoute: typeof rootRouteImport
     }
     '/posts/$postId/$revisionId': {
       id: '/posts/$postId/$revisionId'
-      path: '/$postId/$revisionId'
+      path: '/posts/$postId/$revisionId'
       fullPath: '/posts/$postId/$revisionId'
       preLoaderRoute: typeof PostsPostIdRevisionIdRouteImport
-      parentRoute: typeof PostsRouteRoute
+      parentRoute: typeof rootRouteImport
     }
     '/demo/start/server-funcs': {
       id: '/demo/start/server-funcs'
@@ -330,6 +332,8 @@ const rootRouteChildren: RootRouteChildren = {
   DemoApiNamesRoute: DemoApiNamesRoute,
   DemoStartApiRequestRoute: DemoStartApiRequestRoute,
   DemoStartServerFuncsRoute: DemoStartServerFuncsRoute,
+  PostsPostIdRevisionIdRoute: PostsPostIdRevisionIdRoute,
+  PostsPostIdIndexRoute: PostsPostIdIndexRoute,
   DemoStartSsrDataOnlyRoute: DemoStartSsrDataOnlyRoute,
   DemoStartSsrFullSsrRoute: DemoStartSsrFullSsrRoute,
   DemoStartSsrSpaModeRoute: DemoStartSsrSpaModeRoute,

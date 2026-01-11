@@ -1,6 +1,7 @@
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import appCss from '../styles.css?url'
@@ -38,13 +39,16 @@ function NotFound() {
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-full">
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className="h-full flex flex-col">
         <Header />
-        {children}
+        <main className="flex-1 overflow-y-auto bg-linear-to-b from-slate-900 via-slate-800 to-slate-900 text-amber-50">
+          {children}
+        </main>
+        <Footer />
         <TanStackDevtools
           config={{ position: 'bottom-right' }}
           plugins={[
